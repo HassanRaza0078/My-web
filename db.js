@@ -12,7 +12,7 @@ function openDb() {
 function init() {
   const db = openDb();
   db.exec(MIGRATION, (err) => {
-    if (err) console.error("Error creating DB:", err);
+    if (err) console.error("❌ Error creating DB:", err);
     else console.log("✅ Database initialized successfully");
     db.close();
   });
@@ -21,4 +21,3 @@ function init() {
 if (process.argv[2] === "--init") init();
 
 module.exports = { openDb };
-const dbPath = process.env.DATABASE_PATH || './data.db';
