@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Animated Portfolio</title>
+
+<style>
+:root {
+  --primary: #7c3aed;
+  --secondary: #5b21b6;
+  --bg-dark: #0b1220;
+  --text-light: #e2e8f0;
+  --text-gray: #94a3b8;
+  --bg-light: #f1f5f9;
+  --text-dark: #1e293b;
+}
+
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s, color 0.3s; }
+body {
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
+  color: var(--text-light);
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* LIGHT MODE STYLES */
+body.light {
+  background: linear-gradient(135deg, #e0e7ff, #f8fafc);
+  color: var(--text-dark);
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+body.light nav {
+  background: rgba(255,255,255,0.8);
+}
+.brand { font-weight: 800; font-size: 1.5rem; }
+.brand span { color: var(--primary); }
+nav ul { list-style: none; display: flex; gap: 25px; }
+nav a {
+  text-decoration: none;
+  color: var(--text-gray);
+  font-weight: 500;
+  transition: 0.3s;
+}
+nav a:hover { color: var(--primary); transform: scale(1.1); }
+
+/* THEME TOGGLE BUTTON */
+#themeToggle {
+  border: none;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#themeToggle:hover {
+  background: var(--secondary);
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  animation: fadeIn 1.2s ease-in;
+}
+.hero h1 { font-size: 2.5rem; }
+.hero h1 span { color: var(--primary); }
+.hero p { margin-top: 10px; color: var(--text-gray); }
+.btn {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+.btn:hover { transform: scale(1.05); }
+
+/* PROJECTS */
+#projects { padding: 80px 20px; text-align: center; }
+#projects h2 { margin-bottom: 40px; font-size: 2rem; color: var(--primary); }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: auto;
+}
+.card {
+  background: var(--bg-dark);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transition: transform 0.4s ease;
+}
+.card:hover { transform: translateY(-10px); }
+body.light .card {
+  background: white;
+  color: var(--text-dark);
+}
+
+/* CONTACT */
+#contact {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #3b0764, #1e1b4b);
+}
+body.light #contact {
+  background: linear-gradient(135deg, #c7d2fe, #e0e7ff);
+}
+#contact h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  color: white;
+}
+body.light #contact h2 {
+  color: var(--text-dark);
+}
+form {
+  max-width: 550px;
+  margin: auto;
+  background: rgba(255,255,255,0.1);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+body.light form {
+  background: white;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  outline: none;
+}
+input:focus, textarea:focus {
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 0 10px var(--primary);
+}
+body.light input, body.light textarea {
+  background: #f1f5f9;
+  color: var(--text-dark);
+}
+textarea { resize: none; }
+
+#statusMsg {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+body.light #statusMsg { color: var(--text-dark); }
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #0b1220;
+  color: var(--text-gray);
+  font-size: 0.9rem;
+}
+body.light footer {
+  background: #f8fafc;
+  color: var(--text-dark);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media(max-width:768px){
+  nav ul { display:none; }
+  nav { justify-content:space-between; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">My<span>Portfolio</span></div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button id="themeToggle">🌙</button>
+</nav>
+
+<section id="home" class="hero">
+  <h1>Assalamualaikum, I'm <span id="typed"></span></h1>
+  <p>Frontend Developer • Designer • Creator</p>
+  <button class="btn" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
+</section>
+
+<section id="projects">
+  <h2>My Projects</h2>
+  <div class="grid">
+    <div class="card"><h3>Portfolio Website</h3><p>A simple responsive personal website.</p></div>
+    <div class="card"><h3>Todo App</h3><p>Organize daily tasks easily.</p></div>
+    <div class="card"><h3>Landing Page</h3><p>Modern animated homepage UI.</p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+    <button class="btn" type="submit">Send Message</button>
+    <p id="statusMsg"></p>
+  </form>
+</section>
+
+<footer>
+  © <span id="year"></span> My Portfolio. Built with ❤️ by Hassan Raza
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Typing animation
+const words = ["Hassan Raza", "a Web Developer", "a Designer", "a Creator"];
+let i=0, j=0, forward=true;
+function typing(){
+  const span=document.getElementById('typed');
+  span.textContent=words[i].slice(0,j);
+  if(forward){ j++; if(j>words[i].length){ forward=false; setTimeout(typing,800); return; } }
+  else { j--; if(j<0){ forward=true; i=(i+1)%words.length; j=0; } }
+  setTimeout(typing, forward?120:60);
+}
+typing();
+
+// Contact Form (frontend)
+document.getElementById("contactForm").addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  const msg=document.getElementById("statusMsg");
+  msg.textContent="Sending...";
+  const data={
+    name:document.getElementById("name").value,
+    email:document.getElementById("email").value,
+    message:document.getElementById("message").value
+  };
+  try{
+    const res=await fetch("/contact",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(data)
+    });
+    const text=await res.text();
+    msg.textContent=text.includes("Thank") ? "✅ Message Sent Successfully!" : "❌ Failed to Send Message.";
+  }catch{
+    msg.textContent="⚠️ Network Error. Try again.";
+  }
+  e.target.reset();
+});
+
+// Theme Toggle
+const toggleBtn=document.getElementById('themeToggle');
+toggleBtn.addEventListener('click',()=>{
+  document.body.classList.toggle('light');
+  toggleBtn.textContent=document.body.classList.contains('light') ? "🌙" : "☀️";
+});
+</script>
+</body>
+</html>
