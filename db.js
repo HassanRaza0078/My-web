@@ -21,3 +21,4 @@ function init() {
 if (process.argv[2] === "--init") init();
 
 module.exports = { openDb };
+const dbPath = process.env.DATABASE_PATH || './data.db';
